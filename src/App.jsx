@@ -1,5 +1,9 @@
-import "./App.css";
-
-function App() {}
+function App() {
+  return (
+    <div>
+      <>Salve salve meu truta</>
+    </div>
+  );
+}
 
 export default App;
