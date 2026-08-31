@@ -6,6 +6,7 @@ import {
   TrashIcon,
 } from '../assets/icons';
 import Button from './Button';
+import TasksSeparator from './TasksSeparator';
 
 const Tasks = () => {
   return (
@@ -27,30 +28,15 @@ const Tasks = () => {
 
       <div className="rounded bg-white p-6">
         <div className="my-6 space-y-3">
-          <div className="gap-2 border-b border-solid border-[#f4f4f5] pb-1">
-            <p className="flex items-center gap-1 text-sm text-[##9A9C9F]">
-              <SunIcon />
-              Manhã
-            </p>
-          </div>
+          <TasksSeparator title="Manhã" icon={<SunIcon />} />
         </div>
 
         <div className="my-6 space-y-3">
-          <div className="gap-2 border-b border-solid border-[#f4f4f5] pb-1">
-            <p className="flex items-center gap-1 text-sm text-[##9A9C9F]">
-              <CloudSunIcon />
-              Tarde
-            </p>
-          </div>
+          <TasksSeparator title="Tarde" icon={<CloudSunIcon />} />
         </div>
 
         <div className="my-6 space-y-3">
-          <div className="gap-2 border-b border-solid border-[#f4f4f5] pb-1">
-            <p className="flex items-center gap-1 text-sm text-[##9A9C9F]">
-              <MoonIcon />
-              Noite
-            </p>
-          </div>
+          <TasksSeparator title="Noite" icon={<MoonIcon />} />
         </div>
       </div>
     </div>
