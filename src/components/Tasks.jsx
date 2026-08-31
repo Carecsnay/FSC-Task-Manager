@@ -1,4 +1,10 @@
-import { AddIcon, TrashIcon } from '../assets/icons';
+import {
+  AddIcon,
+  CloudSunIcon,
+  MoonIcon,
+  SunIcon,
+  TrashIcon,
+} from '../assets/icons';
 import Button from './Button';
 
 const Tasks = () => {
@@ -16,6 +22,35 @@ const Tasks = () => {
           <Button>
             Nova Tarefa <AddIcon />
           </Button>
+        </div>
+      </div>
+
+      <div className="rounded bg-white p-6">
+        <div className="my-6 space-y-3">
+          <div className="gap-2 border-b border-solid border-[#f4f4f5] pb-1">
+            <p className="flex items-center gap-1 text-sm text-[##9A9C9F]">
+              <SunIcon />
+              Manhã
+            </p>
+          </div>
+        </div>
+
+        <div className="my-6 space-y-3">
+          <div className="gap-2 border-b border-solid border-[#f4f4f5] pb-1">
+            <p className="flex items-center gap-1 text-sm text-[##9A9C9F]">
+              <CloudSunIcon />
+              Tarde
+            </p>
+          </div>
+        </div>
+
+        <div className="my-6 space-y-3">
+          <div className="gap-2 border-b border-solid border-[#f4f4f5] pb-1">
+            <p className="flex items-center gap-1 text-sm text-[##9A9C9F]">
+              <MoonIcon />
+              Noite
+            </p>
+          </div>
         </div>
       </div>
     </div>
