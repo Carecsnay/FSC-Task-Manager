@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   AddIcon,
   CloudSunIcon,
@@ -11,12 +12,33 @@ import TaskItem from './TaskItem';
 import TasksSeparator from './TasksSeparator';
 
 const Tasks = () => {
-  const morningTasks = TASKS.filter((task) => task.time === 'morning');
-  const afternoonTasks = TASKS.filter((task) => task.time === 'afternoon');
-  const eveningTasks = TASKS.filter((task) => task.time === 'evening');
+  const [tasks, setTasks] = useState(TASKS);
+
+  const morningTasks = tasks.filter((task) => task.time === 'morning');
+  const afternoonTasks = tasks.filter((task) => task.time === 'afternoon');
+  const eveningTasks = tasks.filter((task) => task.time === 'evening');
+
+  const handleTaskCheckBoxClick = (taskId) => {
+    const newTasks = tasks.map((task) => {
+      if (task.id !== taskId) return task;
+
+      if (task.status === 'done') {
+        return { ...task, status: 'not_started' };
+      }
+
+      if (task.status === 'not_started') {
+        return { ...task, status: 'in_progress' };
+      }
+
+      if (task.status === 'in_progress') {
+        return { ...task, status: 'done' };
+      }
+    });
+    setTasks(newTasks);
+  };
 
   return (
-    <div className="w-full px-8 py-16">
+    <div className="w-full space-y-6 px-8 py-16">
       <div className="flex justify-between">
         <div>
           <h2 className="text-xl font-semibold text-[#00ADB5]">Início</h2>
@@ -34,21 +56,33 @@ const Tasks = () => {
         <div className="my-6 space-y-3">
           <TasksSeparator title="Manhã" icon={<SunIcon />} />
           {morningTasks.map((task) => (
-            <TaskItem key={task.id} task={task} />
+            <TaskItem
+              key={task.id}
+              task={task}
+              handleTaskCheckBoxClick={handleTaskCheckBoxClick}
+            />
           ))}
         </div>
 
         <div className="my-6 space-y-3">
           <TasksSeparator title="Tarde" icon={<CloudSunIcon />} />
           {afternoonTasks.map((task) => (
-            <TaskItem key={task.id} task={task} />
+            <TaskItem
+              key={task.id}
+              task={task}
+              handleTaskCheckBoxClick={handleTaskCheckBoxClick}
+            />
           ))}
         </div>
 
         <div className="my-6 space-y-3">
           <TasksSeparator title="Noite" icon={<MoonIcon />} />
           {eveningTasks.map((task) => (
-            <TaskItem key={task.id} task={task} />
+            <TaskItem
+              key={task.id}
+              task={task}
+              handleTaskCheckBoxClick={handleTaskCheckBoxClick}
+            />
           ))}
         </div>
       </div>

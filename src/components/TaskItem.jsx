@@ -1,6 +1,6 @@
 import { CheckIcon, DetailsIcon, LoaderIcon } from '../assets/icons';
 
-const TaskItem = ({ task }) => {
+const TaskItem = ({ task, handleTaskCheckBoxClick }) => {
   const statusVariants = {
     done: 'bg-[#00ADB5] text-[#00ADB5]',
     in_progress: 'bg-[#ffaa04] text-[#ffaa04]',
@@ -12,7 +12,7 @@ const TaskItem = ({ task }) => {
 
   return (
     <div
-      className={`flex items-center justify-between gap-2 rounded bg-opacity-10 px-4 py-3 text-sm ${currentVariant}`}
+      className={`flex items-center justify-between gap-2 rounded bg-opacity-10 px-4 py-3 text-sm transition ${currentVariant}`}
     >
       <div className="flex items-center justify-center gap-2">
         <label
@@ -22,6 +22,7 @@ const TaskItem = ({ task }) => {
             type="checkbox"
             checked={task.status === 'done'}
             className="absolute h-full w-full cursor-pointer opacity-0"
+            onChange={() => handleTaskCheckBoxClick(task.id)}
           />
           {task.status === 'done' && <CheckIcon />}
           {task.status === 'in_progress' && (
