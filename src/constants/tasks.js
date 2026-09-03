@@ -1,0 +1,81 @@
+export const TASKS = [
+  {
+    id: 1,
+    title: 'Estudar nova trilha de react',
+    description: 'Estudar',
+    time: 'morning',
+    status: 'in_progress',
+  },
+  {
+    id: 2,
+    title: 'Estudar nova trilha de react',
+    description: 'Estudar',
+    time: 'morning',
+    status: 'in_progress',
+  },
+  {
+    id: 3,
+    title: 'Estudar nova trilha de react',
+    description: 'Estudar',
+    time: 'morning',
+    status: 'in_progress',
+  },
+  {
+    id: 4,
+    title: 'Estudar nova trilha de react',
+    description: 'Estudar',
+    time: 'morning',
+    status: 'in_progress',
+  },
+  {
+    id: 5,
+    title: 'Estudar React Pro',
+    description: 'Finalizar a trilha de react pro!',
+    time: 'afternoon',
+    status: 'done',
+  },
+  {
+    id: 6,
+    title: 'Estudar React Pro',
+    description: 'Finalizar a trilha de react pro!',
+    time: 'afternoon',
+    status: 'done',
+  },
+  {
+    id: 7,
+    title: 'Estudar React Pro',
+    description: 'Finalizar a trilha de react pro!',
+    time: 'afternoon',
+    status: 'done',
+  },
+  {
+    id: 8,
+    title: 'Estudar trilha de NextJS',
+    description: 'Iniciar e finalizar trilha após a nova trilha de react',
+    time: 'evening',
+    status: 'not_started',
+  },
+  {
+    id: 9,
+    title: 'Estudar trilha de NextJS',
+    description: 'Iniciar e finalizar trilha após a nova trilha de react',
+    time: 'evening',
+    status: 'not_started',
+  },
+  {
+    id: 10,
+    title: 'Estudar trilha de NextJS',
+    description: 'Iniciar e finalizar trilha após a nova trilha de react',
+    time: 'evening',
+    status: 'not_started',
+  },
+  {
+    id: 11,
+    title: 'Estudar trilha de NextJS',
+    description: 'Iniciar e finalizar trilha após a nova trilha de react',
+    time: 'evening',
+    status: 'not_started',
+  },
+];
+
+export default TASKS;
