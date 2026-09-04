@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { toast } from 'sonner';
 import {
   AddIcon,
   CloudSunIcon,
@@ -23,14 +24,17 @@ const Tasks = () => {
       if (task.id !== taskId) return task;
 
       if (task.status === 'done') {
+        toast.warning('Tarefa não iniciada!');
         return { ...task, status: 'not_started' };
       }
 
       if (task.status === 'not_started') {
+        toast.warning('A tarefa está em progresso!');
         return { ...task, status: 'in_progress' };
       }
 
       if (task.status === 'in_progress') {
+        toast.warning('A tarefa foi finalizada!');
         return { ...task, status: 'done' };
       }
     });
@@ -40,6 +44,7 @@ const Tasks = () => {
   const handleTaskDeleteClick = (taskId) => {
     const newTasks = tasks.filter((task) => task.id !== taskId);
     setTasks(newTasks);
+    toast.success('A tarefa foi removida com sucesso!');
   };
 
   return (
