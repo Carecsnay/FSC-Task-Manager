@@ -55,10 +55,10 @@ const Tasks = () => {
           <span className="text-sm font-semibold">Minhas tarefas</span>
         </div>
         <div className="flex items-center gap-3">
-          <Button variant="ghost" icon={TrashIcon}>
+          <Button variant="ghost" icon={<TrashIcon />}>
             Limpar Tarefas
           </Button>
-          <Button icon={AddIcon}>Nova Tarefa</Button>
+          <Button icon={<AddIcon />}>Nova Tarefa</Button>
         </div>
       </div>
 

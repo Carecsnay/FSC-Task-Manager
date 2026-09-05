@@ -1,4 +1,4 @@
-const Button = ({ children, variant = 'primary', ...rest }) => {
+const Button = ({ children, icon, variant = 'primary', ...rest }) => {
   const variants = {
     primary: 'bg-[#00ADB5] text-[#E6F7F8]',
     ghost: 'bg-transparent text-[#35383E]',
@@ -10,6 +10,7 @@ const Button = ({ children, variant = 'primary', ...rest }) => {
       {...rest} //todas as propriedades de um botão
     >
       {children}
+      {icon}
     </button>
   );
 };
