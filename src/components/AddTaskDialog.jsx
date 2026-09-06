@@ -5,8 +5,14 @@ import Input from './Input';
 const AddTaskDialog = ({ isOpen, handleClose }) => {
   if (!isOpen) return null;
   return createPortal(
-    <div className="fixed bottom-0 left-0 top-0 flex h-screen w-screen flex-col items-center justify-center backdrop-blur-sm">
-      <div className="w-[336px] rounded-xl bg-white p-5 text-center shadow">
+    <div
+      className="fixed bottom-0 left-0 top-0 flex h-screen w-screen flex-col items-center justify-center backdrop-blur-sm"
+      onClick={handleClose}
+    >
+      <div
+        className="w-[336px] rounded-xl bg-white p-5 text-center shadow"
+        onClick={(e) => e.stopPropagation()}
+      >
         <div>
           <h2 className="text-lg font-semibold text-[#35383E]">Nova Tarefa</h2>
           <p className="mt-1 text-sm text-[#9A9C9F]">
