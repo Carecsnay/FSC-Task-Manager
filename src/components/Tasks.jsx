@@ -60,10 +60,13 @@ const Tasks = () => {
           <Button variant="ghost" icon={<TrashIcon />}>
             Limpar Tarefas
           </Button>
-          <AddTaskDialog isOpen={dialogIsOpen} />
           <Button icon={<AddIcon />} onClick={() => setDialogIsOpen(true)}>
             Nova Tarefa
           </Button>
+          <AddTaskDialog
+            isOpen={dialogIsOpen}
+            handleClose={() => setDialogIsOpen(false)}
+          />
         </div>
       </div>
 
