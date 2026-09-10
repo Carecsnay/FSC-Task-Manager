@@ -4,7 +4,7 @@ import { CSSTransition } from 'react-transition-group';
 import './AddTaskDialog.css';
 import Button from './Button';
 import Input from './Input';
-import InputLabel from './InputLabel';
+import TimeSelect from './TimeSelect';
 
 const AddTaskDialog = ({ isOpen, handleClose }) => {
   //usado para acessar o elemento HTML da DOM.
@@ -26,7 +26,7 @@ const AddTaskDialog = ({ isOpen, handleClose }) => {
             onClick={handleClose}
           >
             <div
-              className="w-[336px] rounded-xl bg-white p-5 text-center shadow"
+              className="w-[336px] rounded-xl border-2 bg-white p-5 text-center shadow"
               onClick={(e) => e.stopPropagation()}
             >
               <div>
@@ -44,15 +44,7 @@ const AddTaskDialog = ({ isOpen, handleClose }) => {
                   label="Título"
                   placeholder="Título da tarefa"
                 ></Input>
-                <InputLabel htmlFor="time">Horário</InputLabel>
-                <select
-                  id="times"
-                  className="rounded-lg border border-solid border-[#ECECEC] px-4 py-3 text-sm outline-[#00ADB5]"
-                >
-                  <option value="morning">Manhã</option>
-                  <option value="afternoon">Tarde</option>
-                  <option value="evening">Noite</option>
-                </select>
+                <TimeSelect />
                 <Input
                   id="title"
                   label="Descrição"
