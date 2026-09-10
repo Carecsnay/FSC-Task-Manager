@@ -26,19 +26,20 @@ const Tasks = () => {
       if (task.id !== taskId) return task;
 
       if (task.status === 'done') {
-        toast.warning('Tarefa não iniciada!');
+        toast.success('Tarefa não iniciada!');
         return { ...task, status: 'not_started' };
       }
 
       if (task.status === 'not_started') {
-        toast.warning('A tarefa está em progresso!');
+        toast.success('A tarefa está em progresso!');
         return { ...task, status: 'in_progress' };
       }
 
       if (task.status === 'in_progress') {
-        toast.warning('A tarefa foi finalizada!');
+        toast.success('A tarefa foi finalizada!');
         return { ...task, status: 'done' };
       }
+      return task;
     });
     setTasks(newTasks);
   };
@@ -47,6 +48,11 @@ const Tasks = () => {
     const newTasks = tasks.filter((task) => task.id !== taskId);
     setTasks(newTasks);
     toast.success('A tarefa foi removida com sucesso!');
+  };
+
+  const handleAddTaskSubmit = (task) => {
+    setTasks([...tasks, task]);
+    toast.success('Tarefa adicionada com sucesso!');
   };
 
   return (
@@ -66,6 +72,7 @@ const Tasks = () => {
           <AddTaskDialog
             isOpen={dialogIsOpen}
             handleClose={() => setDialogIsOpen(false)}
+            handleSubmit={handleAddTaskSubmit}
           />
         </div>
       </div>
@@ -77,7 +84,7 @@ const Tasks = () => {
             <TaskItem
               key={task.id}
               task={task}
-              handleCheckBoxClick={handleTaskCheckBoxClick}
+              handleCheckboxClick={handleTaskCheckBoxClick}
               handleDeleteClick={handleTaskDeleteClick}
             />
           ))}
@@ -89,7 +96,7 @@ const Tasks = () => {
             <TaskItem
               key={task.id}
               task={task}
-              handleCheckBoxClick={handleTaskCheckBoxClick}
+              handleCheckboxClick={handleTaskCheckBoxClick}
               handleDeleteClick={handleTaskDeleteClick}
             />
           ))}
@@ -101,7 +108,7 @@ const Tasks = () => {
             <TaskItem
               key={task.id}
               task={task}
-              handleCheckBoxClick={handleTaskCheckBoxClick}
+              handleCheckboxClick={handleTaskCheckBoxClick}
               handleDeleteClick={handleTaskDeleteClick}
             />
           ))}
