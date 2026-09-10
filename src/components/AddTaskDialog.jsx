@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { CSSTransition } from 'react-transition-group';
 import { v4 } from 'uuid';
@@ -25,6 +25,13 @@ const AddTaskDialog = ({ isOpen, handleClose, handleSubmit }) => {
 
   //usado para acessar o elemento HTML da DOM.
   const nodeRef = useRef();
+
+  useEffect(() => {
+    if (!isOpen) {
+      setTitle('');
+      setDescription('');
+    }
+  }, [isOpen]);
 
   return (
     <CSSTransition
