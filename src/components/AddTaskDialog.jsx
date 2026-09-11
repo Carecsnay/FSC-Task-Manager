@@ -11,11 +11,37 @@ const AddTaskDialog = ({ isOpen, handleClose, handleSubmit }) => {
   const [title, setTitle] = useState();
   const [time, setTime] = useState('morning');
   const [description, setDescription] = useState();
+  const [errors, setErrors] = useState([]);
 
   const handleSaveClick = () => {
-    if (!title.trim() || !time.trim() || !description.trim()) {
-      return alert('Preencha todos os campos!');
+    const newErrors = [];
+
+    if (!title.trim()) {
+      newErrors.push({
+        inputError: 'title',
+        message: 'O campo titulo é obrigatório.',
+      });
     }
+
+    if (!time.trim()) {
+      newErrors.push({
+        inputError: 'time',
+        message: 'O campo horário é obrigatório.',
+      });
+    }
+
+    if (!description.trim()) {
+      newErrors.push({
+        inputError: 'description',
+        message: 'O campo descrição é obrigatório.',
+      });
+    }
+
+    if (newErrors.length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
     handleSubmit({
       id: v4(),
       title,
@@ -25,6 +51,12 @@ const AddTaskDialog = ({ isOpen, handleClose, handleSubmit }) => {
     });
     handleClose();
   };
+
+  const titleError = errors.find((error) => error.inputError === 'title');
+  const timeError = errors.find((error) => error.inputError === 'time');
+  const descriptionError = errors.find(
+    (error) => error.inputError === 'description'
+  );
 
   //usado para acessar o elemento HTML da DOM.
   const nodeRef = useRef();
@@ -69,19 +101,24 @@ const AddTaskDialog = ({ isOpen, handleClose, handleSubmit }) => {
                   id="title"
                   label="Título"
                   placeholder="Título da tarefa"
-                  // value={}
                   onChange={(event) => setTitle(event.target.value)}
+                  errorMessage={titleError?.message}
                 ></Input>
+
                 <TimeSelect
                   value={time}
                   onChange={(event) => setTime(event.target.value)}
+                  errorMessage={timeError?.message}
                 />
+
                 <Input
-                  id="title"
+                  id="description"
                   label="Descrição"
                   placeholder="Descriva a tarefa"
                   onChange={(event) => setDescription(event.target.value)}
+                  errorMessage={descriptionError?.message}
                 ></Input>
+
                 <div className="mt-4 flex items-center justify-center gap-3">
                   <Button
                     className="w-full"

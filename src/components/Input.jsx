@@ -1,6 +1,6 @@
 import InputLabel from './InputLabel';
 
-const Input = ({ label, ...rest }) => {
+const Input = ({ label, errorMessage, ...rest }) => {
   return (
     <div className="flex flex-col space-y-1 text-start">
       <InputLabel
@@ -14,6 +14,11 @@ const Input = ({ label, ...rest }) => {
         label={label}
         {...rest}
       ></input>
+      {errorMessage && (
+        <span className="pl-1 text-left text-xs text-red-500">
+          {errorMessage}
+        </span>
+      )}
     </div>
   );
 };
