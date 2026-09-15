@@ -1,6 +1,7 @@
+import { forwardRef } from 'react';
 import InputLabel from './InputLabel';
 
-const Input = ({ label, errorMessage, ...rest }) => {
+const Input = forwardRef(({ label, errorMessage, ...rest }, ref) => {
   return (
     <div className="flex flex-col space-y-1 text-start">
       <InputLabel
@@ -12,6 +13,7 @@ const Input = ({ label, errorMessage, ...rest }) => {
       <input
         className="rounded-lg border border-solid border-[#ECECEC] px-4 py-3 text-sm outline-[#00ADB5]"
         label={label}
+        ref={ref}
         {...rest}
       ></input>
       {errorMessage && (
@@ -21,6 +23,8 @@ const Input = ({ label, errorMessage, ...rest }) => {
       )}
     </div>
   );
-};
+});
+
+Input.displayName = 'input';
 
 export default Input;
