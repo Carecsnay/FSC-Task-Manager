@@ -85,10 +85,10 @@ const AddTaskDialog = ({ isOpen, handleClose, handleSubmit }) => {
               onClick={(e) => e.stopPropagation()}
             >
               <div>
-                <h2 className="text-lg font-semibold text-[#35383E]">
+                <h2 className="text-lg font-semibold text-brand-dark-blue">
                   Nova Tarefa
                 </h2>
-                <p className="mt-1 text-sm text-[#9A9C9F]">
+                <p className="mt-1 text-sm text-brand-text-gray">
                   Insira as informações abaixo
                 </p>
               </div>

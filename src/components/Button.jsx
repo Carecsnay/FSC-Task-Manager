@@ -8,9 +8,9 @@ const Button = ({
   ...rest
 }) => {
   const variants = {
-    primary: 'bg-[#00ADB5] text-[#E6F7F8]',
-    secondary: 'bg-[#EEEEEE] text-[#35383E]',
-    ghost: 'bg-transparent text-[#35383E]',
+    primary: 'bg-brand-primary text-brand-light-gray',
+    secondary: 'bg-dark-gray text-brand-dark-blue',
+    ghost: 'bg-transparent text-brand-dark-blue',
   };
 
   const sizes = {

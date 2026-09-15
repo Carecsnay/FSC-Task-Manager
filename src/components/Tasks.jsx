@@ -55,15 +55,23 @@ const Tasks = () => {
     toast.success('Tarefa adicionada com sucesso!');
   };
 
+  const handleCleanTasks = () => {
+    setTasks([]);
+  };
+
   return (
     <div className="w-full space-y-6 px-8 py-16">
       <div className="flex justify-between">
         <div>
-          <h2 className="text-xl font-semibold text-[#00ADB5]">Início</h2>
+          <h2 className="text-xl font-semibold text-brand-primary">Início</h2>
           <span className="text-sm font-semibold">Minhas tarefas</span>
         </div>
         <div className="flex items-center gap-3">
-          <Button variant="ghost" icon={<TrashIcon />}>
+          <Button
+            variant="ghost"
+            icon={<TrashIcon />}
+            onClick={handleCleanTasks}
+          >
             Limpar Tarefas
           </Button>
           <Button icon={<AddIcon />} onClick={() => setDialogIsOpen(true)}>

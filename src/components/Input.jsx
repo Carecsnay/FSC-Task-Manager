@@ -7,12 +7,12 @@ const Input = forwardRef(({ label, errorMessage, ...rest }, ref) => {
     <div className="flex flex-col space-y-1 text-start">
       <InputLabel
         htmlFor={rest.id}
-        className="mt-4 text-sm font-semibold text-[#35383E]"
+        className="mt-4 text-sm font-semibold text-brand-dark-blue"
       >
         {label}
       </InputLabel>
       <input
-        className="rounded-lg border border-solid border-[#ECECEC] px-4 py-3 text-sm outline-[#00ADB5]"
+        className="border-dark-gray rounded-lg border border-solid px-4 py-3 text-sm outline-brand-primary"
         label={label}
         ref={ref}
         {...rest}

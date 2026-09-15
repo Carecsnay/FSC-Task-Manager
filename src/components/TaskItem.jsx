@@ -3,9 +3,9 @@ import Button from './Button';
 
 const TaskItem = ({ task, handleCheckboxClick, handleDeleteClick }) => {
   const statusVariants = {
-    done: 'bg-[#00ADB5] text-[#00ADB5]',
-    in_progress: 'bg-[#ffaa04] text-[#ffaa04]',
-    not_started: 'bg-[#35383e]/10 text-[#35383e]',
+    done: 'bg-brand-primary text-brand-primary',
+    in_progress: 'bg-brand-process text-brand-process',
+    not_started: 'bg-brand-dark-blue/10 text-brand-dark-blue',
   };
 
   const currentVariant =
@@ -34,10 +34,10 @@ const TaskItem = ({ task, handleCheckboxClick, handleDeleteClick }) => {
       </div>
       <div className="flex items-center justify-center gap-2">
         <Button variant="ghost" onClick={() => handleDeleteClick(task.id)}>
-          <TrashIcon className="opacity-80 hover:text-red-900 hover:opacity-100" />
+          <TrashIcon className="opacity-80 hover:text-brand-danger hover:opacity-100" />
         </Button>
         <a href="/#" className="transition-all hover:opacity-75">
-          <DetailsIcon className="text-[#35383E] opacity-80" />
+          <DetailsIcon className="text-brand-dark-blue opacity-80" />
         </a>
       </div>
     </div>

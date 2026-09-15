@@ -1,20 +1,20 @@
 import { forwardRef } from 'react';
-import InputLabel from './InputLabel';
 import InputErrorMessage from './InputErrorMessage';
+import InputLabel from './InputLabel';
 
 const TimeSelect = forwardRef(({ errorMessage, ...props }, ref) => {
   return (
     <div className="flex flex-col space-y-1 text-start">
       <InputLabel
         htmlFor="time"
-        className="mt-4 text-sm font-semibold text-[#35383E]"
+        className="mt-4 text-sm font-semibold text-brand-dark-blue"
       >
         Horário
       </InputLabel>
 
       <select
         id="time"
-        className="rounded-lg border border-solid border-[#ECECEC] px-4 py-3 text-sm outline-[#00ADB5]"
+        className="rounded-lg border border-solid border-white px-4 py-3 text-sm outline-brand-primary"
         ref={ref}
         {...props}
       >

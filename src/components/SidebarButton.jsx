@@ -1,9 +1,9 @@
 const SidebarButton = ({ children, variant }) => {
   const getVariantClasses = () => {
     if (variant === 'unselected') {
-      return 'text-[#35383E]';
+      return 'text-brand-dark-blue';
     } else {
-      return 'bg-[#00ADB5] text-[#E6F7F8]';
+      return 'bg-brand-primary text-brand-light-gray';
     }
   };
   return (
