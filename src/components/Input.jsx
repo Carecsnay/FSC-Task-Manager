@@ -1,4 +1,5 @@
 import { forwardRef } from 'react';
+import InputErrorMessage from './InputErrorMessage';
 import InputLabel from './InputLabel';
 
 const Input = forwardRef(({ label, errorMessage, ...rest }, ref) => {
@@ -16,11 +17,7 @@ const Input = forwardRef(({ label, errorMessage, ...rest }, ref) => {
         ref={ref}
         {...rest}
       ></input>
-      {errorMessage && (
-        <span className="pl-1 text-left text-xs text-red-500">
-          {errorMessage}
-        </span>
-      )}
+      {errorMessage && <InputErrorMessage>{errorMessage}</InputErrorMessage>}
     </div>
   );
 });
