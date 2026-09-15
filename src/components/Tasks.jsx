@@ -67,11 +67,7 @@ const Tasks = () => {
           <span className="text-sm font-semibold">Minhas tarefas</span>
         </div>
         <div className="flex items-center gap-3">
-          <Button
-            variant="ghost"
-            icon={<TrashIcon />}
-            onClick={handleCleanTasks}
-          >
+          <Button color="ghost" icon={<TrashIcon />} onClick={handleCleanTasks}>
             Limpar Tarefas
           </Button>
           <Button icon={<AddIcon />} onClick={() => setDialogIsOpen(true)}>
