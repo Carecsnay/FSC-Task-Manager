@@ -8,12 +8,15 @@ const SidebarButton = ({ children, color }) => {
         unselected: 'text-brand-dark-blue',
         selected: 'bg-brand-primary text-brand-light-gray',
       },
+      defaultVariants: {
+        color: 'unselected',
+      },
     },
   });
 
   return (
     <>
-      <a href="/#" className={sidebar(color)}>
+      <a href="/#" className={sidebar({ color })}>
         {children}
       </a>
     </>
