@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
 import InputErrorMessage from './InputErrorMessage';
 import InputLabel from './InputLabel';
@@ -16,6 +17,7 @@ const TimeSelect = forwardRef(({ errorMessage, ...props }, ref) => {
         id="time"
         className="border-dark-gray rounded-lg border border-solid px-4 py-3 text-sm outline-brand-primary"
         ref={ref}
+        defaultValue="morning"
         {...props}
       >
         <option value="morning">Manhã</option>
@@ -27,6 +29,10 @@ const TimeSelect = forwardRef(({ errorMessage, ...props }, ref) => {
     </div>
   );
 });
+
+TimeSelect.propTypes = {
+  errorMessage: PropTypes.string,
+};
 
 TimeSelect.displayName = 'TimeSelect';
 
