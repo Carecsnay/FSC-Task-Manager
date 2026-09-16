@@ -1,8 +1,11 @@
+import PropTypes from 'prop-types';
 import { useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { CSSTransition } from 'react-transition-group';
 import { v4 } from 'uuid';
+
 import './AddTaskDialog.css';
+
 import Button from './Button';
 import Input from './Input';
 import TimeSelect from './TimeSelect';
@@ -139,4 +142,9 @@ const AddTaskDialog = ({ isOpen, handleClose, handleSubmit }) => {
   );
 };
 
+AddTaskDialog.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  handleClose: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+};
 export default AddTaskDialog;
