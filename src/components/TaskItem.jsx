@@ -1,16 +1,20 @@
 import PropTypes from 'prop-types';
+import { memo } from 'react';
 import { CheckIcon, DetailsIcon, LoaderIcon, TrashIcon } from '../assets/icons';
 import Button from './Button';
 
-const TaskItem = ({ task, handleCheckboxClick, handleDeleteClick }) => {
-  const statusVariants = {
-    done: 'bg-brand-primary text-brand-primary',
-    in_progress: 'bg-brand-process text-brand-process',
-    not_started: 'bg-brand-dark-blue/10 text-brand-dark-blue',
-  };
+const statusVariants = {
+  done: 'bg-brand-primary text-brand-primary',
+  in_progress: 'bg-brand-process text-brand-process',
+  not_started: 'bg-brand-dark-blue/10 text-brand-dark-blue',
+};
 
+const TaskItem = ({ task, handleCheckboxClick, handleDeleteClick }) => {
   const currentVariant =
     statusVariants[task?.status] || statusVariants['not_started'];
+
+  const onCheckboxChange = () => handleCheckboxClick(task.id);
+  const onDeleteClick = () => handleDeleteClick(task.id);
 
   return (
     <div
@@ -24,7 +28,7 @@ const TaskItem = ({ task, handleCheckboxClick, handleDeleteClick }) => {
             type="checkbox"
             checked={task.status === 'done'}
             className="absolute h-full w-full cursor-pointer opacity-0"
-            onChange={() => handleCheckboxClick(task.id)}
+            onChange={onCheckboxChange}
           />
           {task.status === 'done' && <CheckIcon />}
           {task.status === 'in_progress' && (
@@ -33,8 +37,9 @@ const TaskItem = ({ task, handleCheckboxClick, handleDeleteClick }) => {
         </label>
         {task.title}
       </div>
+
       <div className="flex items-center justify-center gap-2">
-        <Button color="ghost" onClick={() => handleDeleteClick(task.id)}>
+        <Button color="ghost" onClick={onDeleteClick}>
           <TrashIcon className="opacity-80 hover:text-brand-danger hover:opacity-100" />
         </Button>
         <a href="/#" className="transition-all hover:opacity-75">
@@ -55,4 +60,4 @@ TaskItem.propTypes = {
   handleDeleteClick: PropTypes.func.isRequired,
 };
 
-export default TaskItem;
+export default memo(TaskItem);
