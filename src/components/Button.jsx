@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { tv } from 'tailwind-variants';
 
 // o Rest basicamente pega todas as propriedades, exceto as que eu desestruturei tipo a className
@@ -31,6 +32,14 @@ const Button = ({
       {icon}
     </button>
   );
+};
+
+Button.propTypes = {
+  children: PropTypes.node.isRequired,
+  color: PropTypes.oneOf(['primary', 'secondary', 'ghost']),
+  size: PropTypes.oneOf(['small', 'medium']),
+  icon: PropTypes.element,
+  className: PropTypes.string,
 };
 
 export default Button;
