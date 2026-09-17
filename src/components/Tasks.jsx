@@ -53,12 +53,6 @@ const Tasks = () => {
     setTasks(newTasks);
   };
 
-  const handleTaskDeleteClick = (taskId) => {
-    const newTasks = tasks.filter((task) => task.id !== taskId);
-    setTasks(newTasks);
-    toast.success('A tarefa foi removida com sucesso!');
-  };
-
   const handleAddTaskSubmit = async (task) => {
     const response = await fetch('http://localhost:8000/tasks', {
       method: 'POST',
@@ -75,7 +69,28 @@ const Tasks = () => {
     toast.success('Tarefa adicionada com sucesso!');
   };
 
-  const handleCleanTasks = () => {
+  const handleTaskDeleteClick = async (taskId) => {
+    const response = await fetch(`http://localhost:8000/tasks/${taskId}`, {
+      method: 'DELETE',
+    });
+    if (!response.ok) {
+      return toast.error('Erro ao deletar tarefa, tente novamente!');
+    }
+
+    const newTasks = tasks.filter((task) => task.id !== taskId);
+    setTasks(newTasks);
+    toast.success('A tarefa foi removida com sucesso!');
+  };
+
+  const handleCleanTasks = async () => {
+    await Promise.all(
+      tasks.map((task) =>
+        fetch(`http://localhost:8000/tasks/${task.id}`, {
+          method: 'DELETE',
+        })
+      )
+    );
+
     setTasks([]);
   };
 
