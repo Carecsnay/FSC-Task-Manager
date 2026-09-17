@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
-import { memo } from 'react';
+import { memo, useState } from 'react';
+import { toast } from 'sonner';
 import { CheckIcon, DetailsIcon, LoaderIcon, TrashIcon } from '../assets/icons';
 import Button from './Button';
 
@@ -9,12 +10,25 @@ const statusVariants = {
   not_started: 'bg-brand-dark-blue/10 text-brand-dark-blue',
 };
 
-const TaskItem = ({ task, handleCheckboxClick, handleDeleteClick }) => {
+const TaskItem = ({ task, handleCheckboxClick, onDeleteClick }) => {
   const currentVariant =
     statusVariants[task?.status] || statusVariants['not_started'];
 
   const onCheckboxChange = () => handleCheckboxClick(task.id);
-  const onDeleteClick = () => handleDeleteClick(task.id);
+  const [deleteTaskLoading, setDeleteTaskLoading] = useState(false);
+
+  const handleDeleteClick = async () => {
+    setDeleteTaskLoading(true);
+    const response = await fetch(`http://localhost:8000/tasks/${task.id}`, {
+      method: 'DELETE',
+    });
+    if (!response.ok) {
+      setDeleteTaskLoading(false);
+      return toast.error('Erro ao deletar tarefa, tente novamente!');
+    }
+    onDeleteClick(task.id);
+    setDeleteTaskLoading(false);
+  };
 
   return (
     <div
@@ -39,8 +53,16 @@ const TaskItem = ({ task, handleCheckboxClick, handleDeleteClick }) => {
       </div>
 
       <div className="flex items-center justify-center gap-2">
-        <Button color="ghost" onClick={onDeleteClick}>
-          <TrashIcon className="opacity-80 hover:text-brand-danger hover:opacity-100" />
+        <Button
+          color="ghost"
+          onClick={handleDeleteClick}
+          disabled={deleteTaskLoading}
+        >
+          {deleteTaskLoading ? (
+            <LoaderIcon className="animate-spin text-brand-dark-gray" />
+          ) : (
+            <TrashIcon className="opacity-80 hover:text-brand-danger hover:opacity-100" />
+          )}
         </Button>
         <a href="/#" className="transition-all hover:opacity-75">
           <DetailsIcon className="text-brand-dark-blue opacity-80" />
@@ -57,7 +79,7 @@ TaskItem.propTypes = {
     status: PropTypes.string.isRequired,
   }).isRequired,
   handleCheckboxClick: PropTypes.func.isRequired,
-  handleDeleteClick: PropTypes.func.isRequired,
+  onDeleteClick: PropTypes.func.isRequired,
 };
 
 export default memo(TaskItem);
