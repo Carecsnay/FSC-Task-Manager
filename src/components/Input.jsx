@@ -16,6 +16,7 @@ const Input = forwardRef(({ label, errorMessage, id, ...rest }, ref) => {
         id={id}
         className="border-dark-gray rounded-lg border border-solid px-4 py-3 text-sm outline-brand-primary"
         ref={ref}
+        autoComplete="off"
         {...rest}
       />
       {errorMessage && <InputErrorMessage>{errorMessage}</InputErrorMessage>}
